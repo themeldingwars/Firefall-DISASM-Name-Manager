@@ -1,5 +1,5 @@
-﻿# Firefall DISM Name Manager
-*Firefall DISM Name Manager is an application to easily manage Firefall subroutine names for disassemblers*
+﻿# Firefall DISAM Name Manager
+*Firefall DISAM Name Manager is an application to easily manage Firefall subroutine names for disassemblers*
 
 The goal of this tool is to allow for improving the ability to share research while reverse engineering the client. Utilizing a simple file format for data transfer and supporting the ability to import from and export to common tools, sharing work is faster.
 
