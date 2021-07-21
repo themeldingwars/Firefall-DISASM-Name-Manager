@@ -233,14 +233,14 @@ class JEBScript_FFC_MakeNames_1962(IScript):
 		prj = ctx.getMainProject()
 		code = prj.findUnit(INativeCodeUnit)
 
-        # Category: tfApplication
-        # Category_Comment
-        # Subroutines related to the tfApplication class
+		# Category: tfApplication
+		# Category_Comment
+		# Subroutines related to the tfApplication class
 
-        code.getNativeItemAt(0x6EBA70).setName("tfApplication::Run")
-        code.getNativeItemAt(0x6EB2B0).setName("tfApplication::DetermineRedhandedBitness")
+		code.getNativeItemAt(0x6EBA70).setName("tfApplication::Run")
+		code.getNativeItemAt(0x6EB2B0).setName("tfApplication::DetermineRedhandedBitness")
 
-        # Category: Libraries
+		# Category: Libraries
 		code.getNativeItemAt(0x6FD280).setName("tfYouxi::Initialize")
 		code.getNativeItemAt(0x6FDC20).setName("tf369::Initialize")
 ```
