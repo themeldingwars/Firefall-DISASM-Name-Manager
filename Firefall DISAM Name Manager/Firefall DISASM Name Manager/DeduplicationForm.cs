@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Firefall_DISAM_Name_Manager
+namespace Firefall_DISASM_Name_Manager
 {
     public partial class DeduplicationForm : Form
     {

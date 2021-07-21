@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Firefall_DISAM_Name_Manager
+namespace Firefall_DISASM_Name_Manager
 {
     static class Program
     {

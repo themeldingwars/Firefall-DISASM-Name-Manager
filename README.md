@@ -1,6 +1,6 @@
-﻿# Firefall DISAM Name Manager
+﻿# Firefall DISASM Name Manager
 
-*Firefall DISAM Name Manager is an application to easily manage Firefall subroutine names for disassemblers*
+*Firefall DISASM Name Manager is an application to easily manage Firefall subroutine names for disassemblers*
 
 The goal of this tool is to allow for improving the ability to share research while reverse engineering the client. Utilizing a simple file format for data transfer and supporting the ability to import from and export to common tools, sharing work is faster.
 
@@ -23,7 +23,7 @@ The latest public database files can be found on the [NameManagerDatabases](http
 
 This tool is built with [.NET 5.0](https://dotnet.microsoft.com/download).
 
-![](https://i.imgur.com/8baMvOK.png)
+![](https://i.imgur.com/ghD8irG.png)
 
 ## Two Interaction Modes
 There are two primary interaction modes, Edit Mode and Add Mode. To switch between these modes, click either the Edit Mode or Add Mode buttons in the center of the window.
@@ -59,7 +59,7 @@ This tool stores client version specific subroutine Name information in a json f
 Format:
 ```js
 // Version #{DatabaseFormatVersion}
-// Firefall DISAM Name Manager Database
+// Firefall DISASM Name Manager Database
 // FirefallClient.exe V{TargetClientVersion}
 [{ArrayOfObjects}]
 ```
@@ -67,7 +67,7 @@ Format:
 Example:
 ```js
 // Version #1
-// Firefall DISAM Name Manager Database
+// Firefall DISASM Name Manager Database
 // FirefallClient.exe V1962
 [
   {

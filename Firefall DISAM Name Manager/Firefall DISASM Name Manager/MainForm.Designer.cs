@@ -1,5 +1,5 @@
 ﻿
-namespace Firefall_DISAM_Name_Manager
+namespace Firefall_DISASM_Name_Manager
 {
     partial class MainForm
     {
@@ -459,7 +459,7 @@ namespace Firefall_DISAM_Name_Manager
             this.MainMenuStrip = this.MainFormMenuStrip;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Firefall DISAM Name Manager";
+            this.Text = "Firefall DISASM Name Manager";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.NamesListContextMenuStrip.ResumeLayout(false);
             this.NameGroupBox.ResumeLayout(false);

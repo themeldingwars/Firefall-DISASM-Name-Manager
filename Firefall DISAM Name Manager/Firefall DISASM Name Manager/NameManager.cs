@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Firefall_DISAM_Name_Manager
+namespace Firefall_DISASM_Name_Manager
 {
     public static class Globals
     {
@@ -204,7 +204,7 @@ namespace Firefall_DISAM_Name_Manager
             StringBuilder result = new StringBuilder();
 
             result.Append($"// Version #{Globals.DATABASEVERSION + Environment.NewLine}");
-            result.Append("// Firefall DISAM Name Manager Database" + Environment.NewLine);
+            result.Append("// Firefall DISASM Name Manager Database" + Environment.NewLine);
             result.Append($"// FirefallClient.exe V{Globals.TargetClientVersion + Environment.NewLine}");
 
             if (LocalBaseAddress != 0x400000)
@@ -422,7 +422,7 @@ namespace Firefall_DISAM_Name_Manager
             string result = "";
 
             result += $"Version #{Globals.DATABASEVERSION}" + Environment.NewLine;
-            result += "Firefall DISAM Name Manager Database" + Environment.NewLine;
+            result += "Firefall DISASM Name Manager Database" + Environment.NewLine;
             result += $"FirefallClient.exe V{Globals.TargetClientVersion}" + Environment.NewLine;
 
             return result;

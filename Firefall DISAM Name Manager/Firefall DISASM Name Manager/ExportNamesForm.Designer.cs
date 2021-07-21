@@ -1,5 +1,5 @@
 ﻿
-namespace Firefall_DISAM_Name_Manager
+namespace Firefall_DISASM_Name_Manager
 {
     partial class ExportNamesForm
     {

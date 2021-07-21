@@ -10,7 +10,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Firefall_DISAM_Name_Manager
+namespace Firefall_DISASM_Name_Manager
 {
     public partial class MainForm : Form
     {
@@ -140,7 +140,7 @@ namespace Firefall_DISAM_Name_Manager
         {
             StringBuilder FileContents = new StringBuilder();
             FileContents.AppendLine($"// Version #{Globals.DATABASEVERSION}");
-            FileContents.AppendLine("// Firefall DISAM Name Manager Database");
+            FileContents.AppendLine("// Firefall DISASM Name Manager Database");
             FileContents.AppendLine($"// FirefallClient.exe V{Globals.TargetClientVersion}");
             FileContents.Append(JsonSerializer.Serialize<List<NameClass>>(ListViewToNameClass(), new JsonSerializerOptions { IncludeFields = true, WriteIndented = true }));
             File.WriteAllText(FilePath, FileContents.ToString());

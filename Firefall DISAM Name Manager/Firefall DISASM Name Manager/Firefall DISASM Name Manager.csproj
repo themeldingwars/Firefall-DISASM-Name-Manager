@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
-    <RootNamespace>Firefall_DISAM_Name_Manager</RootNamespace>
+    <RootNamespace>Firefall_DISASM_Name_Manager</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <Description>Easily manage Firefall subroutine names for disassemblers</Description>
     <Copyright>Copyright © Ascendants 2020</Copyright>
