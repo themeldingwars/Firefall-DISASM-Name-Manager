@@ -361,6 +361,62 @@ namespace Firefall_DISAM_Name_Manager
             return Names;
         }
 
+        public string ToJEBPython(List<NameClass> Names, int EnabledStatusLevel, int LocalBaseAddress = 0x400000)
+        {
+            StringBuilder result = new StringBuilder();
+
+            result.Append($"#?description=JEB Python MakeName Script for FirefallClient.exe V{ Globals.TargetClientVersion + Environment.NewLine }");
+            result.Append($"#?shortcut={ Environment.NewLine + Environment.NewLine}");
+
+            result.AppendLine("# !==IMPORTANT==!");
+            result.AppendLine($"# Filename must be \"JEBScript_FFC_MakeNames_{ Globals.TargetClientVersion }.py\"{ Environment.NewLine }");
+
+            result.AppendLine("from com.pnfsoftware.jeb.client.api import IScript");
+            result.AppendLine("from com.pnfsoftware.jeb.core.units import INativeCodeUnit");
+            result.AppendLine("from com.pnfsoftware.jeb.core.units.code import ICodeUnit" + Environment.NewLine);
+
+            result.AppendLine($"class JEBScript_FFC_MakeNames_{ Globals.TargetClientVersion }(IScript):");
+            result.AppendLine("\tdef run(self, ctx):");
+            result.AppendLine("\t\tprj = ctx.getMainProject()");
+            result.AppendLine("\t\tcode = prj.findUnit(INativeCodeUnit)");
+
+            string CurrentCategory = "__CurrentCategory__INVALID";
+
+            foreach (NameClass item in Names)
+            {
+                if (CurrentCategory != item.Category)
+                {
+                    if (item.Category.EndsWith("_Comment"))
+                    {
+                        result.Append(Environment.NewLine + $"\t\t# Category: {item.Category.Substring(0, item.Category.IndexOf("_Comment"))}" + Environment.NewLine);
+                        CurrentCategory = item.Category.Substring(0, item.Category.IndexOf("_Comment"));
+
+                        result.Append($"\t\t# Category_Comment{ Environment.NewLine }\t\t# { item.Comment.Replace("\n", "\n\t\t# ") }{ Environment.NewLine + Environment.NewLine }");
+
+                        continue;
+                    }
+                    else
+                    {
+                        result.Append(Environment.NewLine + $"\t\t# Category: { item.Category + Environment.NewLine }");
+                        CurrentCategory = item.Category;
+                    }
+                }
+
+                string FinalAddress = item.Address;
+                if (LocalBaseAddress != 0x400000)
+                {
+                    FinalAddress = GetFinalAddress(item.Address, LocalBaseAddress);
+                }
+
+                string Status = (EnabledStatusLevel < item.Status ? new string('#', item.Status) : "");
+                string Comment = (item.Comment.Length > 0 ? $" # { item.Comment }" : "");
+
+                result.Append($"\t\t{ Status }code.getNativeItemAt({ FinalAddress }).setName(\"{ item.Name }\"){ Comment }" + Environment.NewLine);
+            }
+
+            return result.ToString();
+        }
+
         public string ToPlainText(List<NameClass> Names)
         {
             string result = "";

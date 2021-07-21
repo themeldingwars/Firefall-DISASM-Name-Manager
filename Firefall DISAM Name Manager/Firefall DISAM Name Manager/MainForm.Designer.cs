@@ -30,25 +30,25 @@ namespace Firefall_DISAM_Name_Manager
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem(new string[] {
             "Application",
             "0x6EBA70",
             "tfApplication::Run",
             "0",
             "Run Subroutine"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem(new string[] {
             "D3DRenderer",
             "0x1308500",
             "d3drenderer::Initialize",
             "0",
             "D3D Renderer Initialize function"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
             "fsDataPaths",
             "0x16B84F0",
             "fsDataPaths::FileExists",
             "0",
             "May be part of slFileSystem instead of fsDataPaths"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
             "slini",
             "0x16DD290",
             "slini::GetStringWithResult",
@@ -115,10 +115,10 @@ namespace Firefall_DISAM_Name_Manager
             this.NamesListView.FullRowSelect = true;
             this.NamesListView.HideSelection = false;
             this.NamesListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4});
+            listViewItem5,
+            listViewItem6,
+            listViewItem7,
+            listViewItem8});
             this.NamesListView.Location = new System.Drawing.Point(12, 27);
             this.NamesListView.MultiSelect = false;
             this.NamesListView.Name = "NamesListView";

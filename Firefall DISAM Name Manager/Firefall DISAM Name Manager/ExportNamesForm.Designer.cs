@@ -58,6 +58,7 @@ namespace Firefall_DISAM_Name_Manager
             this.ExportTypeComboBox.Items.AddRange(new object[] {
             "IDA Python",
             "Ghidra Python",
+            "JEB Python",
             "JSON",
             "Plain Text"});
             this.ExportTypeComboBox.Location = new System.Drawing.Point(118, 12);

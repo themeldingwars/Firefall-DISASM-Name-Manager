@@ -70,6 +70,16 @@ namespace Firefall_DISAM_Name_Manager
         {
             NamesListView.BeginUpdate();
 
+            List<NameClass> ListNames = ListViewToNameClass();
+            List<string> Addresses = new List<string>();
+            List<string> Names = new List<string>();
+
+            foreach (NameClass name in ListNames)
+            {
+                Addresses.Add(name.Address);
+                Names.Add(name.Name);
+            }
+
             foreach (NameClass item in NamesObject)
             {
                 ListViewItem.ListViewSubItem Category = new ListViewItem.ListViewSubItem

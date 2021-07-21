@@ -64,6 +64,9 @@ namespace Firefall_DISAM_Name_Manager
                 case "Ghidra Python":
                     ExportContentsTB.Text = new NameManager().ToGhidraPython(Names, EnabledStatusLevels, LocalBaseAddress);
                     break;
+                case "JEB Python":
+                    ExportContentsTB.Text = new NameManager().ToJEBPython(Names, EnabledStatusLevels, LocalBaseAddress);
+                    break;
                 case "JSON":
                     ExportContentsTB.Text = new NameManager().ToJSON(Names, LocalBaseAddress);
                     break;
@@ -88,6 +91,7 @@ namespace Firefall_DISAM_Name_Manager
             {
                 case "IDA Python":
                 case "Ghidra Python":
+                case "JEB Python":
                     extension = new []{ "py", "Python Files (*.py) | *.py"};
                     break;
                 case "JSON":
@@ -118,6 +122,12 @@ namespace Firefall_DISAM_Name_Manager
                 DefaultExt = extension[0],
                 Filter = extension[1]
             };
+
+            // JEB Scripts must have their script filename and entry point method name be identical
+            if (ExportTypeComboBox.Text == "JEB Python")
+            {
+                SFD.FileName = $"JEBScript_FFC_MakeNames_{ Globals.TargetClientVersion }.py";
+            }
 
             if (SFD.ShowDialog() == DialogResult.OK)
             {
