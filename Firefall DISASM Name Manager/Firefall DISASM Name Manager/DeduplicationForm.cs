@@ -199,7 +199,7 @@ namespace Firefall_DISASM_Name_Manager
 
         private void ListViewsToNameList()
         {
-            foreach (ListViewItem item in DupeAddressListView.Items)
+            foreach (ListViewItem item in DupeAddressListView.CheckedItems)
             {
                 NameClass NameObject = new NameClass();
                 NameObject.Category = item.SubItems["Category"].Text;
@@ -211,7 +211,7 @@ namespace Firefall_DISASM_Name_Manager
                 DeduplicatedItems.Add(NameObject);
             }
 
-            foreach (ListViewItem item in DupeNameListView.Items)
+            foreach (ListViewItem item in DupeNameListView.CheckedItems)
             {
                 NameClass NameObject = new NameClass();
                 NameObject.Category = item.SubItems["Category"].Text;

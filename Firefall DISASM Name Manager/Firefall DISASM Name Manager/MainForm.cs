@@ -101,13 +101,13 @@ namespace Firefall_DISASM_Name_Manager
                         ViewItem.SubItems["Comment"].Text = PendingItem.Comment;
                         continue;
                     }
-                    else if (DupeAddress &! DupeName)
+                    else if (DupeAddress)
                     {
                         DuplicateObjects["Address"].Add(PendingItem);
                         SourceObjects["Address"].Add(ExistingItem);
                         continue;
                     }
-                    else if (DupeName &! DupeAddress)
+                    else if (DupeName)
                     {
                         DuplicateObjects["Name"].Add(PendingItem);
                         SourceObjects["Name"].Add(ExistingItem);

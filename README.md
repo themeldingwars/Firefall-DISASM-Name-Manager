@@ -204,6 +204,29 @@ Ghidra Python Script support is designed to allow using individual lines instead
   * `from ghidra.program.model.symbol.SourceType import *`
 2. Replace the fully qualified name (`ghidra.program.model.symbol.SourceType.USER_DEFINED`) in each line to be only `USER_DEFINED`.
 
+## Deduplication
+In order to help manage databases and bring in changes from multiple sources, a deduplication process is supported when importing data.
+
+![](https://i.imgur.com/ooOeNx4.png)
+
+By default, the setting `Update Category, Status, and Comment of Full Duplicate items` is enabled. This will make any items being imported that have **both** their `Address` and `Name` fields match an item in the database, the `Category`, `Status`, and `Comment` of the imported item will overwrite whatever is set for the current database item. This is desirable to have enabled when data is being imported that you want to use as the new "trusted" data. However, you may want to instead handle these matches on a case-by-case basis. In these instances, this setting should be disabled to pass each match into the Item Deduplication dialog.
+
+### Performing Item Deduplication
+![](https://i.imgur.com/seCXytY.png)
+
+Deduplicating data can appear like an overwhelming task when first presented with the interface. However, once you understand what is going on it becomes much easier and quicker to work with. It's not _that_ scary!
+
+There are two primary differences to make when dealing with duplicate data, which are separated into two lists. On the left you have data which contains duplicate `Addresses`. On the right, data which only has duplicate `Names` is displayed. Managing these lists at their core is mostly identical, except the `Names` list has one key difference. You are allowed to have multiple items with the same name selected. This however is discouraged so you will still be presented with the deduplication dialog to have the option to manage it.
+
+When reading these lists, data is colored to indicate the source of it. When data has a :green_square:`Green` background, which is also the first item shown in each group of duplicates, it is coming from the `Current Database`. When the data has a :red_square:`Red` background it is from the data being imported, called `New Duplicate Data`. Only one item per matched group may be "selected" (`Checked`) at a time.
+
+**Important Note:** In some instances you may encounter `Current Database` items which are **NOT Checked**. When you see this, that means that address is used multiple times in the `Current Database`. The last instance of that address usage will be `Checked` in the database. In the example screenshot above, `Address` `0x16C9620` is used multiple times in the `Current Database`. This has resulted in all except the last instance being deselected by default. However, it is possible to recheck the prior unchecked ones, which will not uncheck the other instance. This is done so that the current duplicates may be preserved if desired - though this is highly not recommended to do. Both the additional instances in the `Current Database` and duplicate instances in the `New Duplicate Data` are given a `Red` background when this occurs.
+
+**Recommended Workflow**
+To keep things simple, the recommended workflow when dealing with duplicates is to leave the `Update Full Duplicate Items` setting enabled when importing data. Then when duplicates occur, check each one in the `Item Deduplication` dialog and decide which version of the data you wish to keep in your database. Ideally these duplicate item lists will be short and quick to fully go through.
+
+Any data that is not checked when clicking `Apply Deduplication` will not be imported, and if already in the database, will be removed. If you decide you do not want to perform this process the dialog may be closed (via the X button) to abort the entire importing process. No data will be modified in the database if this is done.
+
 ## Exporting Name Data
 In addition to saving the Names to a database file, this tool will allow you to export the Names to supported formats. Exporting has two key settings to get the correct expected results.
 
