@@ -41,7 +41,7 @@ namespace Firefall_DISASM_Name_Manager
             // 
             // BaseAddressLabel
             // 
-            this.BaseAddressLabel.Location = new System.Drawing.Point(109, 12);
+            this.BaseAddressLabel.Location = new System.Drawing.Point(187, 12);
             this.BaseAddressLabel.Name = "BaseAddressLabel";
             this.BaseAddressLabel.Size = new System.Drawing.Size(100, 23);
             this.BaseAddressLabel.TabIndex = 0;
@@ -51,7 +51,7 @@ namespace Firefall_DISASM_Name_Manager
             // BaseAddressTB
             // 
             this.BaseAddressTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.BaseAddressTB.Location = new System.Drawing.Point(215, 12);
+            this.BaseAddressTB.Location = new System.Drawing.Point(293, 12);
             this.BaseAddressTB.Name = "BaseAddressTB";
             this.BaseAddressTB.ReadOnly = true;
             this.BaseAddressTB.Size = new System.Drawing.Size(100, 23);
@@ -61,7 +61,7 @@ namespace Firefall_DISASM_Name_Manager
             // ClientVersionTB
             // 
             this.ClientVersionTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ClientVersionTB.Location = new System.Drawing.Point(215, 41);
+            this.ClientVersionTB.Location = new System.Drawing.Point(293, 41);
             this.ClientVersionTB.Name = "ClientVersionTB";
             this.ClientVersionTB.Size = new System.Drawing.Size(100, 23);
             this.ClientVersionTB.TabIndex = 3;
@@ -69,7 +69,7 @@ namespace Firefall_DISASM_Name_Manager
             // 
             // ClientVersionLabel
             // 
-            this.ClientVersionLabel.Location = new System.Drawing.Point(109, 41);
+            this.ClientVersionLabel.Location = new System.Drawing.Point(187, 41);
             this.ClientVersionLabel.Name = "ClientVersionLabel";
             this.ClientVersionLabel.Size = new System.Drawing.Size(100, 23);
             this.ClientVersionLabel.TabIndex = 2;
@@ -78,9 +78,9 @@ namespace Firefall_DISASM_Name_Manager
             // 
             // FilePathBtn
             // 
-            this.FilePathBtn.Location = new System.Drawing.Point(109, 70);
+            this.FilePathBtn.Location = new System.Drawing.Point(187, 75);
             this.FilePathBtn.Name = "FilePathBtn";
-            this.FilePathBtn.Size = new System.Drawing.Size(206, 23);
+            this.FilePathBtn.Size = new System.Drawing.Size(206, 25);
             this.FilePathBtn.TabIndex = 4;
             this.FilePathBtn.Text = "Select Database File Path";
             this.FilePathBtn.UseVisualStyleBackColor = true;
@@ -88,9 +88,10 @@ namespace Firefall_DISASM_Name_Manager
             // 
             // CreateDatabaseBtn
             // 
-            this.CreateDatabaseBtn.Location = new System.Drawing.Point(12, 122);
+            this.CreateDatabaseBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.CreateDatabaseBtn.Location = new System.Drawing.Point(12, 167);
             this.CreateDatabaseBtn.Name = "CreateDatabaseBtn";
-            this.CreateDatabaseBtn.Size = new System.Drawing.Size(135, 23);
+            this.CreateDatabaseBtn.Size = new System.Drawing.Size(135, 25);
             this.CreateDatabaseBtn.TabIndex = 6;
             this.CreateDatabaseBtn.Text = "Create Database";
             this.CreateDatabaseBtn.UseVisualStyleBackColor = true;
@@ -98,9 +99,10 @@ namespace Firefall_DISASM_Name_Manager
             // 
             // CancelBtn
             // 
-            this.CancelBtn.Location = new System.Drawing.Point(278, 122);
+            this.CancelBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CancelBtn.Location = new System.Drawing.Point(433, 167);
             this.CancelBtn.Name = "CancelBtn";
-            this.CancelBtn.Size = new System.Drawing.Size(135, 23);
+            this.CancelBtn.Size = new System.Drawing.Size(135, 25);
             this.CancelBtn.TabIndex = 7;
             this.CancelBtn.Text = "Cancel";
             this.CancelBtn.UseVisualStyleBackColor = true;
@@ -108,10 +110,12 @@ namespace Firefall_DISASM_Name_Manager
             // 
             // FilePathLabel
             // 
+            this.FilePathLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.FilePathLabel.AutoEllipsis = true;
-            this.FilePathLabel.Location = new System.Drawing.Point(12, 96);
+            this.FilePathLabel.Location = new System.Drawing.Point(12, 122);
             this.FilePathLabel.Name = "FilePathLabel";
-            this.FilePathLabel.Size = new System.Drawing.Size(401, 23);
+            this.FilePathLabel.Size = new System.Drawing.Size(556, 23);
             this.FilePathLabel.TabIndex = 5;
             this.FilePathLabel.Text = "<FilePath>";
             this.FilePathLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -120,7 +124,8 @@ namespace Firefall_DISASM_Name_Manager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(425, 152);
+            this.CancelButton = this.CancelBtn;
+            this.ClientSize = new System.Drawing.Size(580, 197);
             this.Controls.Add(this.FilePathLabel);
             this.Controls.Add(this.CancelBtn);
             this.Controls.Add(this.CreateDatabaseBtn);
@@ -133,6 +138,7 @@ namespace Firefall_DISASM_Name_Manager
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "NewDatabaseForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "New Database";
             this.Load += new System.EventHandler(this.NewDatabaseForm_Load);

@@ -12,6 +12,7 @@ namespace Firefall_DISASM_Name_Manager
 {
     public partial class NewDatabaseForm : Form
     {
+        string TITLE = "New Database";
         public string DatabaseFilePath = "";
         public string ClientVersion = "";
 
@@ -42,11 +43,18 @@ namespace Firefall_DISASM_Name_Manager
             {
                 DatabaseFilePath = SFD.FileName;
                 FilePathLabel.Text = DatabaseFilePath;
+                this.Text = $"{TITLE} - {System.IO.Path.GetFileName(SFD.FileName)}";
             }
         }
 
         private void CreateDatabaseBtn_Click(object sender, EventArgs e)
         {
+            if (DatabaseFilePath == "")
+            {
+                MessageBox.Show("No database file path selected.\n\nPlease select a file path to save the database to.", "No Database File Path", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             ClientVersion = ClientVersionTB.Text;
             DialogResult = DialogResult.OK;
             this.Close();

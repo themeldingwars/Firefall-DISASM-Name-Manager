@@ -113,7 +113,7 @@ namespace Firefall_DISASM_Name_Manager
 
             if (extension[0] == "")
             {
-                MessageBox.Show("Selected format does not currently support saving to a file.");
+                MessageBox.Show("Selected format does not currently support saving to a file.", "Saving Not Supported", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             SaveFileDialog SFD = new SaveFileDialog
@@ -161,7 +161,7 @@ namespace Firefall_DISASM_Name_Manager
 
                 if (!IsValid)
                 {
-                    MessageBox.Show("Base Address is invalid. Please enter a valid address offset in the format 0x########.");
+                    MessageBox.Show("Base Address is invalid. Please enter a valid address offset in the format 0x########.", "Invalid Base Address", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 

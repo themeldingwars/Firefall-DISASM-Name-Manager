@@ -80,7 +80,7 @@ namespace Firefall_DISASM_Name_Manager
             this.ExportContentsTB.ReadOnly = true;
             this.ExportContentsTB.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.ExportContentsTB.Size = new System.Drawing.Size(520, 200);
-            this.ExportContentsTB.TabIndex = 5;
+            this.ExportContentsTB.TabIndex = 7;
             this.ExportContentsTB.WordWrap = false;
             // 
             // SaveFileBtn
@@ -89,7 +89,7 @@ namespace Firefall_DISASM_Name_Manager
             this.SaveFileBtn.Location = new System.Drawing.Point(455, 12);
             this.SaveFileBtn.Name = "SaveFileBtn";
             this.SaveFileBtn.Size = new System.Drawing.Size(77, 81);
-            this.SaveFileBtn.TabIndex = 4;
+            this.SaveFileBtn.TabIndex = 8;
             this.SaveFileBtn.Text = "Save to File";
             this.SaveFileBtn.UseVisualStyleBackColor = true;
             this.SaveFileBtn.Click += new System.EventHandler(this.SaveFileBtn_Click);
@@ -120,7 +120,7 @@ namespace Firefall_DISASM_Name_Manager
             this.BaseAddressLabel.Location = new System.Drawing.Point(12, 70);
             this.BaseAddressLabel.Name = "BaseAddressLabel";
             this.BaseAddressLabel.Size = new System.Drawing.Size(100, 23);
-            this.BaseAddressLabel.TabIndex = 6;
+            this.BaseAddressLabel.TabIndex = 4;
             this.BaseAddressLabel.Text = "Base Address :";
             this.BaseAddressLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -133,16 +133,16 @@ namespace Firefall_DISASM_Name_Manager
             this.BaseAddressTB.MaxLength = 10;
             this.BaseAddressTB.Name = "BaseAddressTB";
             this.BaseAddressTB.Size = new System.Drawing.Size(250, 23);
-            this.BaseAddressTB.TabIndex = 7;
+            this.BaseAddressTB.TabIndex = 5;
             this.BaseAddressTB.Text = "0x400000";
             // 
             // UpdateBaseAddressBtn
             // 
             this.UpdateBaseAddressBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.UpdateBaseAddressBtn.Location = new System.Drawing.Point(374, 70);
+            this.UpdateBaseAddressBtn.Location = new System.Drawing.Point(374, 69);
             this.UpdateBaseAddressBtn.Name = "UpdateBaseAddressBtn";
-            this.UpdateBaseAddressBtn.Size = new System.Drawing.Size(75, 23);
-            this.UpdateBaseAddressBtn.TabIndex = 8;
+            this.UpdateBaseAddressBtn.Size = new System.Drawing.Size(75, 25);
+            this.UpdateBaseAddressBtn.TabIndex = 6;
             this.UpdateBaseAddressBtn.Text = "Update";
             this.UpdateBaseAddressBtn.UseVisualStyleBackColor = true;
             this.UpdateBaseAddressBtn.Click += new System.EventHandler(this.UpdateBaseAddressBtn_Click);
@@ -161,7 +161,10 @@ namespace Firefall_DISASM_Name_Manager
             this.Controls.Add(this.ExportContentsTB);
             this.Controls.Add(this.ExportTypeComboBox);
             this.Controls.Add(this.ExportTypeLabel);
+            this.DoubleBuffered = true;
+            this.MinimizeBox = false;
             this.Name = "ExportNamesForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Export Names";
             this.Load += new System.EventHandler(this.ExportNamesForm_Load);

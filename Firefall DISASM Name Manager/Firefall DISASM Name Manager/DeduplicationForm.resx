@@ -57,10 +57,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Below are Items being Added to the Database.
-These Items have a conflicting Name with existing items in the Database.
-Select the Items below to replace existing Database Items.
-Alternatively, you can select to Add them anyways.</value>
-  </data>
 </root>

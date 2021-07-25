@@ -32,6 +32,9 @@ namespace Firefall_DISASM_Name_Manager
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            // Prevent flickering on resize by forcing the ListView to be double buffered
+            NamesListView.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(NamesListView, true, null);
+
             this.ForeColor = Color.DarkGray;
             this.BackColor = Color.FromArgb(255, 30, 30, 30);
             DarkTheme.ApplyTheme_Dark(this);
@@ -66,20 +69,73 @@ namespace Firefall_DISASM_Name_Manager
             NamesListView.ListViewItemSorter = null;
         }
 
-        public void AddNamesToListView(List<NameClass> NamesObject)
+        public int AddNamesToListView(List<NameClass> NamesObject, bool UpdateFullDuplicates = true)
         {
             NamesListView.BeginUpdate();
 
+            // Lists of all objects that exist in the ListView already used for duplication checking
             List<NameClass> ListNames = ListViewToNameClass();
-            List<string> Addresses = new List<string>();
-            List<string> Names = new List<string>();
 
-            foreach (NameClass name in ListNames)
+            List<NameClass> UpdateObjects = new List<NameClass>();
+
+            Dictionary<string, List<NameClass>> DuplicateObjects = new Dictionary<string, List<NameClass>>() { { "Address", new List<NameClass>() }, { "Name", new List<NameClass>() } };
+            Dictionary<string, List<NameClass>> SourceObjects = new Dictionary<string, List<NameClass>>() { { "Address", new List<NameClass>() }, { "Name", new List<NameClass>() } };
+
+            // Determine if an object is a duplicate and if so what fields are duplicates
+            foreach (NameClass PendingItem in NamesObject)
             {
-                Addresses.Add(name.Address);
-                Names.Add(name.Name);
+                int SourceItemIndex = -1;
+                foreach (NameClass ExistingItem in ListNames)
+                {
+                    SourceItemIndex++;
+                    bool DupeAddress = PendingItem.Address == ExistingItem.Address;
+                    bool DupeName = PendingItem.Name == ExistingItem.Name;
+
+                    if (DupeAddress && DupeName && UpdateFullDuplicates)
+                    {
+                        // Do not consider to be a "duplicate" but rather a metadata update entry
+                        UpdateObjects.Add(PendingItem);
+                        ListViewItem ViewItem = NamesListView.Items[SourceItemIndex];
+                        ViewItem.SubItems["Category"].Text = PendingItem.Category;
+                        ViewItem.SubItems["Status"].Text = PendingItem.Status.ToString();
+                        ViewItem.SubItems["Comment"].Text = PendingItem.Comment;
+                        continue;
+                    }
+                    else if (DupeAddress &! DupeName)
+                    {
+                        DuplicateObjects["Address"].Add(PendingItem);
+                        SourceObjects["Address"].Add(ExistingItem);
+                        continue;
+                    }
+                    else if (DupeName &! DupeAddress)
+                    {
+                        DuplicateObjects["Name"].Add(PendingItem);
+                        SourceObjects["Name"].Add(ExistingItem);
+                        continue;
+                    }
+                }
             }
 
+            // Remove update-only objects from the list of objects to be added
+            UpdateObjects.All(x => NamesObject.Remove(x));
+
+            if (DuplicateObjects["Address"].Count > 0 || DuplicateObjects["Name"].Count > 0)
+            {
+                DeduplicationForm deduplicationForm = new DeduplicationForm(DuplicateObjects, SourceObjects);
+                if (deduplicationForm.ShowDialog(this) == DialogResult.OK)
+                {
+                    NamesObject.AddRange(deduplicationForm.DeduplicatedItems);
+                }
+                else
+                {
+                    NamesListView.EndUpdate();
+                    MessageBox.Show("Deduplication process was canceled. The entire import process will now be aborted.\n\nNo data has been imported to the database.", "Deduplication canceled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // Return -1 to allow detecting when importing was canceled and not that 0 items were in the import table
+                    return -1;
+                }
+            }
+
+            // Add new item to the ListView
             foreach (NameClass item in NamesObject)
             {
                 ListViewItem.ListViewSubItem Category = new ListViewItem.ListViewSubItem
@@ -116,6 +172,8 @@ namespace Firefall_DISASM_Name_Manager
             SortNamesListView();
 
             NamesListView.EndUpdate();
+
+            return NamesObject.Count;
         }
 
         private List<NameClass> ListViewToNameClass()
@@ -161,7 +219,7 @@ namespace Firefall_DISASM_Name_Manager
                         Globals.TargetClientVersion = ClientVersion;
                         break;
                     default:
-                        MessageBox.Show("Unsupported Database Version Format Detected!" + Environment.NewLine + "Attempt to Import the database to use with this version of Name Manager.", "Unsupported Database Version");
+                        MessageBox.Show("Unsupported Database Version Format Detected!" + Environment.NewLine + "Attempt to Import the database to use with this version of Name Manager.", "Unsupported Database Version", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;
                 }
 
@@ -169,7 +227,7 @@ namespace Firefall_DISASM_Name_Manager
             }
             else
             {
-                MessageBox.Show("Invalid Database Format Detected!", "Invalid Database");
+                MessageBox.Show("Invalid Database Format Detected!", "Invalid Database", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -185,9 +243,14 @@ namespace Firefall_DISASM_Name_Manager
         {
             List<string> CategoryItems = new List<string>();
 
+            // Add each existing category to the available dropdown if it does not exist within it already
             foreach (ListViewItem item in NamesListView.Items)
             {
-                CategoryItems.Add(item.SubItems["Category"].Text);
+                string CategoryName = item.SubItems["Category"].Text;
+                if (!CategoryItems.Contains(CategoryName))
+                {
+                    CategoryItems.Add(CategoryName);
+                }
             }
 
             CategoryComboBox.Items.Clear();
@@ -214,7 +277,7 @@ namespace Firefall_DISASM_Name_Manager
 
             if (NamesListView.Items.Count == 0)
             {
-                MessageBox.Show("There are no Names in the database to export.");
+                MessageBox.Show("There are no Names in the database to export.", "No Names", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -448,13 +511,13 @@ namespace Firefall_DISASM_Name_Manager
                 }
                 else
                 {
-                    MessageBox.Show("Address is invalid. Please enter a valid address offset in the format 0x########.");
+                    MessageBox.Show("Address is invalid. Please enter a valid address offset in the format 0x########.", "Invalid Address", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
             else
             {
-                MessageBox.Show("Base Address is invalid. Please enter a valid address offset in the format 0x########.");
+                MessageBox.Show("Base Address is invalid. Please enter a valid address offset in the format 0x########.", "Invalid Base Address", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }
@@ -508,13 +571,13 @@ namespace Firefall_DISASM_Name_Manager
                 }
                 else
                 {
-                    MessageBox.Show("Address is invalid. Please enter a valid address offset in the format 0x########.");
+                    MessageBox.Show("Address is invalid. Please enter a valid address offset in the format 0x########.", "Invalid Address", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
             else
             {
-                MessageBox.Show("Base Address is invalid. Please enter a valid address offset in the format 0x########.");
+                MessageBox.Show("Base Address is invalid. Please enter a valid address offset in the format 0x########.", "Invalid Base Address", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }

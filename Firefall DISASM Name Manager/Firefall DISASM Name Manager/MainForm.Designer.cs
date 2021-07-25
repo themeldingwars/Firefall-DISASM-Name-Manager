@@ -30,25 +30,25 @@ namespace Firefall_DISASM_Name_Manager
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "Application",
             "0x6EBA70",
             "tfApplication::Run",
             "0",
             "Run Subroutine"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
             "D3DRenderer",
             "0x1308500",
             "d3drenderer::Initialize",
             "0",
             "D3D Renderer Initialize function"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
             "fsDataPaths",
             "0x16B84F0",
             "fsDataPaths::FileExists",
             "0",
             "May be part of slFileSystem instead of fsDataPaths"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
             "slini",
             "0x16DD290",
             "slini::GetStringWithResult",
@@ -115,14 +115,14 @@ namespace Firefall_DISASM_Name_Manager
             this.NamesListView.FullRowSelect = true;
             this.NamesListView.HideSelection = false;
             this.NamesListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem5,
-            listViewItem6,
-            listViewItem7,
-            listViewItem8});
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4});
             this.NamesListView.Location = new System.Drawing.Point(12, 27);
             this.NamesListView.MultiSelect = false;
             this.NamesListView.Name = "NamesListView";
-            this.NamesListView.Size = new System.Drawing.Size(910, 255);
+            this.NamesListView.Size = new System.Drawing.Size(960, 255);
             this.NamesListView.TabIndex = 1;
             this.NamesListView.UseCompatibleStateImageBehavior = false;
             this.NamesListView.View = System.Windows.Forms.View.Details;
@@ -132,7 +132,7 @@ namespace Firefall_DISASM_Name_Manager
             // 
             this.CategoryColumnHeader.Name = "CategoryColumnHeader";
             this.CategoryColumnHeader.Text = "Category";
-            this.CategoryColumnHeader.Width = 100;
+            this.CategoryColumnHeader.Width = 120;
             // 
             // AddressColumnHeader
             // 
@@ -155,7 +155,7 @@ namespace Firefall_DISASM_Name_Manager
             // 
             this.CommentColumnHeader.Name = "CommentColumnHeader";
             this.CommentColumnHeader.Text = "Comment";
-            this.CommentColumnHeader.Width = 300;
+            this.CommentColumnHeader.Width = 340;
             // 
             // NamesListContextMenuStrip
             // 
@@ -206,7 +206,7 @@ namespace Firefall_DISASM_Name_Manager
             this.NameGroupBox.Controls.Add(this.CategoryLabel);
             this.NameGroupBox.Location = new System.Drawing.Point(12, 317);
             this.NameGroupBox.Name = "NameGroupBox";
-            this.NameGroupBox.Size = new System.Drawing.Size(910, 152);
+            this.NameGroupBox.Size = new System.Drawing.Size(960, 152);
             this.NameGroupBox.TabIndex = 3;
             this.NameGroupBox.TabStop = false;
             this.NameGroupBox.Text = "Name";
@@ -215,19 +215,19 @@ namespace Firefall_DISASM_Name_Manager
             // 
             this.BaseAddressTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BaseAddressTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.BaseAddressTB.Location = new System.Drawing.Point(559, 80);
+            this.BaseAddressTB.Location = new System.Drawing.Point(580, 80);
             this.BaseAddressTB.MaxLength = 10;
             this.BaseAddressTB.Name = "BaseAddressTB";
-            this.BaseAddressTB.Size = new System.Drawing.Size(345, 23);
+            this.BaseAddressTB.Size = new System.Drawing.Size(374, 23);
             this.BaseAddressTB.TabIndex = 11;
             this.BaseAddressTB.Text = "0x400000";
             // 
             // BaseAddressLabel
             // 
             this.BaseAddressLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BaseAddressLabel.Location = new System.Drawing.Point(453, 80);
+            this.BaseAddressLabel.Location = new System.Drawing.Point(484, 80);
             this.BaseAddressLabel.Name = "BaseAddressLabel";
-            this.BaseAddressLabel.Size = new System.Drawing.Size(100, 23);
+            this.BaseAddressLabel.Size = new System.Drawing.Size(90, 23);
             this.BaseAddressLabel.TabIndex = 10;
             this.BaseAddressLabel.Text = "Base Address :";
             this.BaseAddressLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -235,9 +235,9 @@ namespace Firefall_DISASM_Name_Manager
             // SubmitNameBtn
             // 
             this.SubmitNameBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.SubmitNameBtn.Location = new System.Drawing.Point(559, 109);
+            this.SubmitNameBtn.Location = new System.Drawing.Point(580, 109);
             this.SubmitNameBtn.Name = "SubmitNameBtn";
-            this.SubmitNameBtn.Size = new System.Drawing.Size(345, 23);
+            this.SubmitNameBtn.Size = new System.Drawing.Size(374, 25);
             this.SubmitNameBtn.TabIndex = 12;
             this.SubmitNameBtn.Text = "Add New Name";
             this.SubmitNameBtn.UseVisualStyleBackColor = true;
@@ -247,11 +247,11 @@ namespace Firefall_DISASM_Name_Manager
             // 
             this.CommentTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CommentTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CommentTB.Location = new System.Drawing.Point(559, 22);
+            this.CommentTB.Location = new System.Drawing.Point(580, 22);
             this.CommentTB.Multiline = true;
             this.CommentTB.Name = "CommentTB";
             this.CommentTB.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.CommentTB.Size = new System.Drawing.Size(344, 52);
+            this.CommentTB.Size = new System.Drawing.Size(373, 52);
             this.CommentTB.TabIndex = 9;
             this.CommentTB.WordWrap = false;
             this.CommentTB.TextChanged += new System.EventHandler(this.CommentTB_TextChanged);
@@ -259,9 +259,9 @@ namespace Firefall_DISASM_Name_Manager
             // CommentLabel
             // 
             this.CommentLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CommentLabel.Location = new System.Drawing.Point(453, 22);
+            this.CommentLabel.Location = new System.Drawing.Point(484, 22);
             this.CommentLabel.Name = "CommentLabel";
-            this.CommentLabel.Size = new System.Drawing.Size(100, 23);
+            this.CommentLabel.Size = new System.Drawing.Size(90, 23);
             this.CommentLabel.TabIndex = 8;
             this.CommentLabel.Text = "Comment :";
             this.CommentLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -270,9 +270,9 @@ namespace Firefall_DISASM_Name_Manager
             // 
             this.StatusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.StatusComboBox.FormattingEnabled = true;
-            this.StatusComboBox.Location = new System.Drawing.Point(113, 109);
+            this.StatusComboBox.Location = new System.Drawing.Point(88, 109);
             this.StatusComboBox.Name = "StatusComboBox";
-            this.StatusComboBox.Size = new System.Drawing.Size(334, 23);
+            this.StatusComboBox.Size = new System.Drawing.Size(359, 23);
             this.StatusComboBox.TabIndex = 7;
             this.StatusComboBox.SelectedIndexChanged += new System.EventHandler(this.StatusComboBox_SelectedIndexChanged);
             // 
@@ -280,7 +280,7 @@ namespace Firefall_DISASM_Name_Manager
             // 
             this.StatusLabel.Location = new System.Drawing.Point(7, 109);
             this.StatusLabel.Name = "StatusLabel";
-            this.StatusLabel.Size = new System.Drawing.Size(100, 23);
+            this.StatusLabel.Size = new System.Drawing.Size(75, 23);
             this.StatusLabel.TabIndex = 6;
             this.StatusLabel.Text = "Status :";
             this.StatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -288,9 +288,9 @@ namespace Firefall_DISASM_Name_Manager
             // NameTB
             // 
             this.NameTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.NameTB.Location = new System.Drawing.Point(113, 80);
+            this.NameTB.Location = new System.Drawing.Point(88, 80);
             this.NameTB.Name = "NameTB";
-            this.NameTB.Size = new System.Drawing.Size(334, 23);
+            this.NameTB.Size = new System.Drawing.Size(359, 23);
             this.NameTB.TabIndex = 5;
             this.NameTB.TextChanged += new System.EventHandler(this.NameTB_TextChanged);
             // 
@@ -298,7 +298,7 @@ namespace Firefall_DISASM_Name_Manager
             // 
             this.NameLabel.Location = new System.Drawing.Point(7, 80);
             this.NameLabel.Name = "NameLabel";
-            this.NameLabel.Size = new System.Drawing.Size(100, 23);
+            this.NameLabel.Size = new System.Drawing.Size(75, 23);
             this.NameLabel.TabIndex = 4;
             this.NameLabel.Text = "Name :";
             this.NameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -306,10 +306,10 @@ namespace Firefall_DISASM_Name_Manager
             // AddressTB
             // 
             this.AddressTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.AddressTB.Location = new System.Drawing.Point(113, 51);
+            this.AddressTB.Location = new System.Drawing.Point(88, 51);
             this.AddressTB.MaxLength = 10;
             this.AddressTB.Name = "AddressTB";
-            this.AddressTB.Size = new System.Drawing.Size(334, 23);
+            this.AddressTB.Size = new System.Drawing.Size(359, 23);
             this.AddressTB.TabIndex = 3;
             this.AddressTB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AddressTB_KeyDown);
             this.AddressTB.Leave += new System.EventHandler(this.AddressTB_Leave);
@@ -318,7 +318,7 @@ namespace Firefall_DISASM_Name_Manager
             // 
             this.AddressLabel.Location = new System.Drawing.Point(7, 51);
             this.AddressLabel.Name = "AddressLabel";
-            this.AddressLabel.Size = new System.Drawing.Size(100, 23);
+            this.AddressLabel.Size = new System.Drawing.Size(75, 23);
             this.AddressLabel.TabIndex = 2;
             this.AddressLabel.Text = "Address :";
             this.AddressLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -328,9 +328,9 @@ namespace Firefall_DISASM_Name_Manager
             this.CategoryComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.CategoryComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.CategoryComboBox.FormattingEnabled = true;
-            this.CategoryComboBox.Location = new System.Drawing.Point(113, 22);
+            this.CategoryComboBox.Location = new System.Drawing.Point(88, 22);
             this.CategoryComboBox.Name = "CategoryComboBox";
-            this.CategoryComboBox.Size = new System.Drawing.Size(334, 23);
+            this.CategoryComboBox.Size = new System.Drawing.Size(359, 23);
             this.CategoryComboBox.TabIndex = 1;
             this.CategoryComboBox.TextChanged += new System.EventHandler(this.CategoryComboBox_TextChanged);
             // 
@@ -338,7 +338,7 @@ namespace Firefall_DISASM_Name_Manager
             // 
             this.CategoryLabel.Location = new System.Drawing.Point(7, 22);
             this.CategoryLabel.Name = "CategoryLabel";
-            this.CategoryLabel.Size = new System.Drawing.Size(100, 23);
+            this.CategoryLabel.Size = new System.Drawing.Size(75, 23);
             this.CategoryLabel.TabIndex = 0;
             this.CategoryLabel.Text = "Category :";
             this.CategoryLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -348,7 +348,7 @@ namespace Firefall_DISASM_Name_Manager
             this.EditModeBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.EditModeBtn.Location = new System.Drawing.Point(0, 0);
             this.EditModeBtn.Name = "EditModeBtn";
-            this.EditModeBtn.Size = new System.Drawing.Size(455, 23);
+            this.EditModeBtn.Size = new System.Drawing.Size(480, 25);
             this.EditModeBtn.TabIndex = 0;
             this.EditModeBtn.Text = "Edit Mode";
             this.EditModeBtn.UseVisualStyleBackColor = true;
@@ -359,7 +359,7 @@ namespace Firefall_DISASM_Name_Manager
             this.AddModeBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AddModeBtn.Location = new System.Drawing.Point(0, 0);
             this.AddModeBtn.Name = "AddModeBtn";
-            this.AddModeBtn.Size = new System.Drawing.Size(451, 23);
+            this.AddModeBtn.Size = new System.Drawing.Size(476, 25);
             this.AddModeBtn.TabIndex = 1;
             this.AddModeBtn.Text = "Add Mode";
             this.AddModeBtn.UseVisualStyleBackColor = true;
@@ -373,7 +373,7 @@ namespace Firefall_DISASM_Name_Manager
             this.ExportNamesBtn});
             this.MainFormMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MainFormMenuStrip.Name = "MainFormMenuStrip";
-            this.MainFormMenuStrip.Size = new System.Drawing.Size(934, 24);
+            this.MainFormMenuStrip.Size = new System.Drawing.Size(984, 24);
             this.MainFormMenuStrip.TabIndex = 0;
             // 
             // DatabaseMenuStripBtn
@@ -431,6 +431,7 @@ namespace Firefall_DISASM_Name_Manager
             // 
             this.ModeSplitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ModeSplitContainer.Cursor = System.Windows.Forms.Cursors.Default;
             this.ModeSplitContainer.IsSplitterFixed = true;
             this.ModeSplitContainer.Location = new System.Drawing.Point(12, 288);
             this.ModeSplitContainer.Name = "ModeSplitContainer";
@@ -442,15 +443,15 @@ namespace Firefall_DISASM_Name_Manager
             // ModeSplitContainer.Panel2
             // 
             this.ModeSplitContainer.Panel2.Controls.Add(this.AddModeBtn);
-            this.ModeSplitContainer.Size = new System.Drawing.Size(910, 23);
-            this.ModeSplitContainer.SplitterDistance = 455;
+            this.ModeSplitContainer.Size = new System.Drawing.Size(960, 25);
+            this.ModeSplitContainer.SplitterDistance = 480;
             this.ModeSplitContainer.TabIndex = 2;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(934, 477);
+            this.ClientSize = new System.Drawing.Size(984, 477);
             this.Controls.Add(this.ModeSplitContainer);
             this.Controls.Add(this.NameGroupBox);
             this.Controls.Add(this.NamesListView);

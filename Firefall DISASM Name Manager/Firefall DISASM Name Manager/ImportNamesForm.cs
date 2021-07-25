@@ -46,10 +46,24 @@ namespace Firefall_DISASM_Name_Manager
 
         private void ImportSourceFilePathLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            string FilterFormat = "";
+            if (ImportSourceComboBox.Text.Contains("JSON"))
+            {
+                FilterFormat = "JSON Files (*.json)|*.json";
+            }
+            else if (ImportSourceComboBox.Text.Contains("Python"))
+            {
+                FilterFormat = "Python Files (*.py)|*.py";
+            }
+            else
+            {
+                FilterFormat = "All Files (*.*)|*.*";
+            }
+
             OpenFileDialog OFD = new OpenFileDialog
             {
                 Title = "Select file to load...",
-                Filter = "Python Files (*.py) | *.py|JSON Files (*.json) | *.json"
+                Filter = FilterFormat
             };
 
             if (OFD.ShowDialog() == DialogResult.OK)
@@ -122,7 +136,13 @@ namespace Firefall_DISASM_Name_Manager
                     break;
             }
 
-            ((MainForm)Owner).AddNamesToListView(NamesObject);
+            int ImportedCount = ((MainForm)Owner).AddNamesToListView(NamesObject, UpdateDupesCheckBox.Checked);
+
+            if (ImportedCount != -1)
+            {
+                MessageBox.Show($"{ImportedCount} items were imported to the database.", "Items Imported", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
             this.Close();
         }
     }
