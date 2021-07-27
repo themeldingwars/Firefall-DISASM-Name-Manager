@@ -56,7 +56,14 @@ namespace Firefall_DISASM_Name_Manager
             listviewY = (ListViewItem)y;
 
             // Compare the two items
-            compareResult = ObjectCompare.Compare(listviewX.SubItems[ColumnToSort].Text, listviewY.SubItems[ColumnToSort].Text);
+            if (listviewX.SubItems[ColumnToSort].Text.StartsWith("0x") && listviewY.SubItems[ColumnToSort].Text.StartsWith("0x"))
+            {
+                compareResult = ObjectCompare.Compare(Convert.ToInt32(listviewX.SubItems[ColumnToSort].Text, 16), Convert.ToInt32(listviewY.SubItems[ColumnToSort].Text, 16));
+            }
+            else
+            {
+                compareResult = ObjectCompare.Compare(listviewX.SubItems[ColumnToSort].Text, listviewY.SubItems[ColumnToSort].Text);
+            }
 
             // Push "_Comment" Category items to the top of the Category sorting
             if (listviewX.SubItems[ColumnToSort].Text.EndsWith("_Comment") &&

@@ -35,7 +35,14 @@ namespace Firefall_DISASM_Name_Manager
         public int Status;
         public string Comment;
 
-        public NameClass() { }
+        public NameClass()
+        {
+            Category = "";
+            Address = "";
+            Name = "";
+            Status = 0;
+            Comment = "";
+        }
 
         public NameClass(string Category, string Address, string Name, int Status, string Comment)
         {

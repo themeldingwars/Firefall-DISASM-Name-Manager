@@ -63,6 +63,10 @@ namespace Firefall_DISASM_Name_Manager
             // Temporarily enable sorting, .NET 5 WinForms will crash if adding items to a ListView while the ListViewItemSorter is set.
             listViewColumnSorter = new ListViewColumnSorter();
             NamesListView.ListViewItemSorter = listViewColumnSorter;
+            // Sort lower addresses to the top of each category
+            listViewColumnSorter.SortColumn = NamesListView.Columns["AddressColumnHeader"].Index;
+            listViewColumnSorter.Order = SortOrder.Ascending;
+            NamesListView.Sort();
             listViewColumnSorter.SortColumn = NamesListView.Columns["CategoryColumnHeader"].Index;
             listViewColumnSorter.Order = SortOrder.Ascending;
             NamesListView.Sort();
@@ -81,6 +85,8 @@ namespace Firefall_DISASM_Name_Manager
             Dictionary<string, List<NameClass>> DuplicateObjects = new Dictionary<string, List<NameClass>>() { { "Address", new List<NameClass>() }, { "Name", new List<NameClass>() } };
             Dictionary<string, List<NameClass>> SourceObjects = new Dictionary<string, List<NameClass>>() { { "Address", new List<NameClass>() }, { "Name", new List<NameClass>() } };
 
+            List<ListViewItem> SourceDuplicatesToRemove = new List<ListViewItem>();
+
             // Determine if an object is a duplicate and if so what fields are duplicates
             foreach (NameClass PendingItem in NamesObject)
             {
@@ -93,24 +99,43 @@ namespace Firefall_DISASM_Name_Manager
 
                     if (DupeAddress && DupeName && UpdateFullDuplicates)
                     {
-                        // Do not consider to be a "duplicate" but rather a metadata update entry
-                        UpdateObjects.Add(PendingItem);
-                        ListViewItem ViewItem = NamesListView.Items[SourceItemIndex];
-                        ViewItem.SubItems["Category"].Text = PendingItem.Category;
-                        ViewItem.SubItems["Status"].Text = PendingItem.Status.ToString();
-                        ViewItem.SubItems["Comment"].Text = PendingItem.Comment;
-                        continue;
+                        if (PendingItem.Address == "" && PendingItem.Name == "")
+                        {
+                            // This is a category comment and needs to be carefully handled
+                            if (PendingItem.Category == ExistingItem.Category)
+                            {
+                                // Do not consider to be a "duplicate" but rather a metadata update entry
+                                UpdateObjects.Add(PendingItem);
+                                ListViewItem ViewItem = NamesListView.Items[SourceItemIndex];
+                                ViewItem.SubItems["Comment"].Text = PendingItem.Comment;
+                                continue;
+                            }
+                        }
+                        else
+                        {
+                            // Do not consider to be a "duplicate" but rather a metadata update entry
+                            UpdateObjects.Add(PendingItem);
+                            ListViewItem ViewItem = NamesListView.Items[SourceItemIndex];
+                            ViewItem.SubItems["Category"].Text = PendingItem.Category;
+                            ViewItem.SubItems["Status"].Text = PendingItem.Status.ToString();
+                            ViewItem.SubItems["Comment"].Text = PendingItem.Comment;
+                            continue;
+                        }
                     }
                     else if (DupeAddress)
                     {
                         DuplicateObjects["Address"].Add(PendingItem);
                         SourceObjects["Address"].Add(ExistingItem);
+                        SourceDuplicatesToRemove.Add(NamesListView.Items[SourceItemIndex]);
+                        UpdateObjects.Add(PendingItem);
                         continue;
                     }
                     else if (DupeName)
                     {
                         DuplicateObjects["Name"].Add(PendingItem);
                         SourceObjects["Name"].Add(ExistingItem);
+                        SourceDuplicatesToRemove.Add(NamesListView.Items[SourceItemIndex]);
+                        UpdateObjects.Add(PendingItem);
                         continue;
                     }
                 }
@@ -119,11 +144,19 @@ namespace Firefall_DISASM_Name_Manager
             // Remove update-only objects from the list of objects to be added
             UpdateObjects.All(x => NamesObject.Remove(x));
 
+            // Remove duplicate items from the ListView as they will be added back during the deduplication stage if the user selects to keep them
+            foreach (ListViewItem item in SourceDuplicatesToRemove)
+            {
+                NamesListView.Items.Remove(item);
+            }
+
             if (DuplicateObjects["Address"].Count > 0 || DuplicateObjects["Name"].Count > 0)
             {
                 DeduplicationForm deduplicationForm = new DeduplicationForm(DuplicateObjects, SourceObjects);
                 if (deduplicationForm.ShowDialog(this) == DialogResult.OK)
                 {
+                    // TODO: Currently this is adding another copy of the "deduplicated" name to the list of what to add
+                    // This instead needs to be updating the exist entry
                     NamesObject.AddRange(deduplicationForm.DeduplicatedItems);
                 }
                 else
