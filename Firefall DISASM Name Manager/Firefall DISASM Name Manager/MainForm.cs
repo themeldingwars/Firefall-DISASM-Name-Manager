@@ -54,7 +54,7 @@ namespace Firefall_DISASM_Name_Manager
         {
             foreach (int status in Enum.GetValues(typeof(ENameStatus)))
             {
-                StatusComboBox.Items.Add(status);
+                StatusComboBox.Items.Add($"{status}: {Enum.GetName(typeof(ENameStatus), status)}");
             }
         }
 
@@ -252,14 +252,18 @@ namespace Firefall_DISASM_Name_Manager
                         Globals.TargetClientVersion = ClientVersion;
                         break;
                     default:
+                        NamesListView.Items.Clear();
+                        this.Text = TitleText;
                         MessageBox.Show("Unsupported Database Version Format Detected!" + Environment.NewLine + "Attempt to Import the database to use with this version of Name Manager.", "Unsupported Database Version", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;
                 }
 
-                this.Text = TitleText + $" | ClientVersion: {Globals.TargetClientVersion}";
+                this.Text = $"{TitleText} | ClientVersion: {Globals.TargetClientVersion} | {(EditModeBtn.Enabled ? "Add Mode" : "Edit Mode")}";
             }
             else
             {
+                NamesListView.Items.Clear();
+                this.Text = TitleText;
                 MessageBox.Show("Invalid Database Format Detected!", "Invalid Database", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
@@ -423,6 +427,17 @@ namespace Firefall_DISASM_Name_Manager
                 return;
             }
 
+            WriteNamesToFile(DatabasePath);
+            MessageBox.Show($"Database saved to [{DatabasePath}]", "Database Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void SaveDatabaseAsBtn_Click(object sender, EventArgs e)
+        {
+            if (!IsDatabaseLoaded())
+            {
+                return;
+            }
+
             SaveFileDialog SFD = new SaveFileDialog
             {
                 Title = "Select Database to save as...",
@@ -435,6 +450,7 @@ namespace Firefall_DISASM_Name_Manager
             {
                 WriteNamesToFile(SFD.FileName);
                 DatabasePath = SFD.FileName;
+                MessageBox.Show($"Database saved to [{DatabasePath}]", "Database Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -453,6 +469,11 @@ namespace Firefall_DISASM_Name_Manager
                 SubmitNameBtn.Enabled = true;
                 EditModeBtn.Enabled = true;
                 AddModeBtn.Enabled = false;
+            }
+
+            if (DatabaseLoaded)
+            {
+                this.Text = $"{TitleText} | ClientVersion: {Globals.TargetClientVersion} | {(EditModeBtn.Enabled ? "Add Mode" : "Edit Mode")}";
             }
         }
 

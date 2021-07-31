@@ -45,7 +45,7 @@ namespace Firefall_DISASM_Name_Manager
         {
             foreach (int status in Enum.GetValues(typeof(ENameStatus)))
             {
-                EnabledStatusLevelComboBox.Items.Add(status);
+                EnabledStatusLevelComboBox.Items.Add($"{status}: {Enum.GetName(typeof(ENameStatus),status)}");
             }
         }
 
@@ -137,7 +137,7 @@ namespace Firefall_DISASM_Name_Manager
 
         private void EnabledStatusLevelComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            EnabledStatusLevels = int.Parse(EnabledStatusLevelComboBox.Text);
+            EnabledStatusLevels = int.Parse(EnabledStatusLevelComboBox.Text.Substring(0, EnabledStatusLevelComboBox.Text.IndexOf(':')));
             ExportNames();
         }
 

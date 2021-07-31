@@ -87,6 +87,7 @@ namespace Firefall_DISASM_Name_Manager
             this.DatabaseMenuStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.LoadDatabaseBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveDatabaseBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveDatabaseAsBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.ImportNamesBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.ExportNamesBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.ModeSplitContainer = new System.Windows.Forms.SplitContainer();
@@ -272,7 +273,7 @@ namespace Firefall_DISASM_Name_Manager
             this.StatusComboBox.FormattingEnabled = true;
             this.StatusComboBox.Location = new System.Drawing.Point(88, 109);
             this.StatusComboBox.Name = "StatusComboBox";
-            this.StatusComboBox.Size = new System.Drawing.Size(359, 23);
+            this.StatusComboBox.Size = new System.Drawing.Size(392, 23);
             this.StatusComboBox.TabIndex = 7;
             this.StatusComboBox.SelectedIndexChanged += new System.EventHandler(this.StatusComboBox_SelectedIndexChanged);
             // 
@@ -290,7 +291,7 @@ namespace Firefall_DISASM_Name_Manager
             this.NameTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.NameTB.Location = new System.Drawing.Point(88, 80);
             this.NameTB.Name = "NameTB";
-            this.NameTB.Size = new System.Drawing.Size(359, 23);
+            this.NameTB.Size = new System.Drawing.Size(392, 23);
             this.NameTB.TabIndex = 5;
             this.NameTB.TextChanged += new System.EventHandler(this.NameTB_TextChanged);
             // 
@@ -309,7 +310,7 @@ namespace Firefall_DISASM_Name_Manager
             this.AddressTB.Location = new System.Drawing.Point(88, 51);
             this.AddressTB.MaxLength = 10;
             this.AddressTB.Name = "AddressTB";
-            this.AddressTB.Size = new System.Drawing.Size(359, 23);
+            this.AddressTB.Size = new System.Drawing.Size(392, 23);
             this.AddressTB.TabIndex = 3;
             this.AddressTB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AddressTB_KeyDown);
             this.AddressTB.Leave += new System.EventHandler(this.AddressTB_Leave);
@@ -330,7 +331,7 @@ namespace Firefall_DISASM_Name_Manager
             this.CategoryComboBox.FormattingEnabled = true;
             this.CategoryComboBox.Location = new System.Drawing.Point(88, 22);
             this.CategoryComboBox.Name = "CategoryComboBox";
-            this.CategoryComboBox.Size = new System.Drawing.Size(359, 23);
+            this.CategoryComboBox.Size = new System.Drawing.Size(392, 23);
             this.CategoryComboBox.TabIndex = 1;
             this.CategoryComboBox.TextChanged += new System.EventHandler(this.CategoryComboBox_TextChanged);
             // 
@@ -382,7 +383,8 @@ namespace Firefall_DISASM_Name_Manager
             this.NewDatabaseBtn,
             this.DatabaseMenuStripSeparator1,
             this.LoadDatabaseBtn,
-            this.SaveDatabaseBtn});
+            this.SaveDatabaseBtn,
+            this.SaveDatabaseAsBtn});
             this.DatabaseMenuStripBtn.Name = "DatabaseMenuStripBtn";
             this.DatabaseMenuStripBtn.Size = new System.Drawing.Size(67, 20);
             this.DatabaseMenuStripBtn.Text = "Database";
@@ -390,28 +392,35 @@ namespace Firefall_DISASM_Name_Manager
             // NewDatabaseBtn
             // 
             this.NewDatabaseBtn.Name = "NewDatabaseBtn";
-            this.NewDatabaseBtn.Size = new System.Drawing.Size(151, 22);
+            this.NewDatabaseBtn.Size = new System.Drawing.Size(174, 22);
             this.NewDatabaseBtn.Text = "New Database";
             this.NewDatabaseBtn.Click += new System.EventHandler(this.NewDatabaseBtn_Click);
             // 
             // DatabaseMenuStripSeparator1
             // 
             this.DatabaseMenuStripSeparator1.Name = "DatabaseMenuStripSeparator1";
-            this.DatabaseMenuStripSeparator1.Size = new System.Drawing.Size(148, 6);
+            this.DatabaseMenuStripSeparator1.Size = new System.Drawing.Size(171, 6);
             // 
             // LoadDatabaseBtn
             // 
             this.LoadDatabaseBtn.Name = "LoadDatabaseBtn";
-            this.LoadDatabaseBtn.Size = new System.Drawing.Size(151, 22);
+            this.LoadDatabaseBtn.Size = new System.Drawing.Size(174, 22);
             this.LoadDatabaseBtn.Text = "Load Database";
             this.LoadDatabaseBtn.Click += new System.EventHandler(this.LoadDatabaseBtn_Click);
             // 
             // SaveDatabaseBtn
             // 
             this.SaveDatabaseBtn.Name = "SaveDatabaseBtn";
-            this.SaveDatabaseBtn.Size = new System.Drawing.Size(151, 22);
+            this.SaveDatabaseBtn.Size = new System.Drawing.Size(174, 22);
             this.SaveDatabaseBtn.Text = "Save Database";
             this.SaveDatabaseBtn.Click += new System.EventHandler(this.SaveDatabaseBtn_Click);
+            // 
+            // SaveDatabaseAsBtn
+            // 
+            this.SaveDatabaseAsBtn.Name = "SaveDatabaseAsBtn";
+            this.SaveDatabaseAsBtn.Size = new System.Drawing.Size(174, 22);
+            this.SaveDatabaseAsBtn.Text = "Save Database As...";
+            this.SaveDatabaseAsBtn.Click += new System.EventHandler(this.SaveDatabaseAsBtn_Click);
             // 
             // ImportNamesBtn
             // 
@@ -513,6 +522,7 @@ namespace Firefall_DISASM_Name_Manager
         private System.Windows.Forms.ToolStripMenuItem CopySelectedItemBtn;
         private System.Windows.Forms.ToolStripSeparator NamesListContextMenuStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem DeleteSelectedItemBtn;
+        private System.Windows.Forms.ToolStripMenuItem SaveDatabaseAsBtn;
     }
 }
 
