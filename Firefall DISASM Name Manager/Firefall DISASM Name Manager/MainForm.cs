@@ -82,8 +82,16 @@ namespace Firefall_DISASM_Name_Manager
 
             List<NameClass> UpdateObjects = new List<NameClass>();
 
-            Dictionary<string, List<NameClass>> DuplicateObjects = new Dictionary<string, List<NameClass>>() { { "Address", new List<NameClass>() }, { "Name", new List<NameClass>() } };
-            Dictionary<string, List<NameClass>> SourceObjects = new Dictionary<string, List<NameClass>>() { { "Address", new List<NameClass>() }, { "Name", new List<NameClass>() } };
+            Dictionary<string, List<NameClass>> DuplicateObjects = new Dictionary<string, List<NameClass>>()
+            {
+                { "Address", new List<NameClass>() },
+                { "Name", new List<NameClass>() }
+            };
+            Dictionary<string, List<NameClass>> SourceObjects = new Dictionary<string, List<NameClass>>()
+            {
+                { "Address", new List<NameClass>() },
+                { "Name", new List<NameClass>() }
+            };
 
             List<ListViewItem> SourceDuplicatesToRemove = new List<ListViewItem>();
 
@@ -156,7 +164,7 @@ namespace Firefall_DISASM_Name_Manager
                 if (deduplicationForm.ShowDialog(this) == DialogResult.OK)
                 {
                     // TODO: Currently this is adding another copy of the "deduplicated" name to the list of what to add
-                    // This instead needs to be updating the exist entry
+                    // This instead needs to be updating the existing entry.
                     NamesObject.AddRange(deduplicationForm.DeduplicatedItems);
                 }
                 else
