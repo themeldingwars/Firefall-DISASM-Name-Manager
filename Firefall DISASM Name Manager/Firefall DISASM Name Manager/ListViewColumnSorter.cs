@@ -50,24 +50,28 @@ namespace Firefall_DISASM_Name_Manager
         {
             int compareResult;
             ListViewItem listviewX, listviewY;
+            string columnTextX, columnTextY;
 
             // Cast the objects to be compared to ListViewItem objects
             listviewX = (ListViewItem)x;
             listviewY = (ListViewItem)y;
+            // Copy text for readability.
+            columnTextX = listviewX.SubItems[0].Text;
+            columnTextY = listviewY.SubItems[0].Text;
 
             // Compare the two items
-            if (listviewX.SubItems[ColumnToSort].Text.StartsWith("0x") && listviewY.SubItems[ColumnToSort].Text.StartsWith("0x"))
+            if (columnTextX.StartsWith("0x") && columnTextY.StartsWith("0x"))
             {
-                compareResult = ObjectCompare.Compare(Convert.ToInt32(listviewX.SubItems[ColumnToSort].Text, 16), Convert.ToInt32(listviewY.SubItems[ColumnToSort].Text, 16));
+                compareResult = ObjectCompare.Compare(Convert.ToInt32(columnTextX, 16), Convert.ToInt32(columnTextY, 16));
             }
             else
             {
-                compareResult = ObjectCompare.Compare(listviewX.SubItems[ColumnToSort].Text, listviewY.SubItems[ColumnToSort].Text);
+                compareResult = ObjectCompare.Compare(columnTextX, columnTextY);
             }
 
             // Push "_Comment" Category items to the top of the Category sorting
-            if (listviewX.SubItems[ColumnToSort].Text.EndsWith("_Comment") &&
-                listviewX.SubItems[ColumnToSort].Text.Substring(0, listviewX.SubItems[ColumnToSort].Text.IndexOf("_Comment")) == listviewY.SubItems[ColumnToSort].Text)
+            if (columnTextX.EndsWith("_Comment") &&
+                columnTextX.Substring(0, columnTextX.IndexOf("_Comment")) == columnTextY)
             {
                 return -1;
             }
