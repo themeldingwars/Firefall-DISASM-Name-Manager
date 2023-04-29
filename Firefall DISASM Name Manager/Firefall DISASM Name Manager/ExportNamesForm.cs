@@ -45,7 +45,7 @@ namespace Firefall_DISASM_Name_Manager
         {
             foreach (int status in Enum.GetValues(typeof(ENameStatus)))
             {
-                EnabledStatusLevelComboBox.Items.Add($"{status}: {Enum.GetName(typeof(ENameStatus),status)}");
+                EnabledStatusLevelComboBox.Items.Add($"{status}: {Enum.GetName(typeof(ENameStatus), status)}");
             }
         }
 
@@ -60,6 +60,9 @@ namespace Firefall_DISASM_Name_Manager
             {
                 case "IDA Python":
                     ExportContentsTB.Text = new NameManager().ToIDAPython(Names, EnabledStatusLevels, LocalBaseAddress);
+                    break;
+                case "IDA Python 7+":
+                    ExportContentsTB.Text = new NameManager().ToIDAPython(Names, EnabledStatusLevels, LocalBaseAddress, 7);
                     break;
                 case "Ghidra Python":
                     ExportContentsTB.Text = new NameManager().ToGhidraPython(Names, EnabledStatusLevels, LocalBaseAddress);
@@ -90,9 +93,10 @@ namespace Firefall_DISASM_Name_Manager
             switch (ExportTypeComboBox.Text)
             {
                 case "IDA Python":
+                case "IDA Python 7+":
                 case "Ghidra Python":
                 case "JEB Python":
-                    extension = new []{ "py", "Python Files (*.py) | *.py"};
+                    extension = new[] { "py", "Python Files (*.py) | *.py" };
                     break;
                 case "JSON":
                     extension = new[] { "json", "JSON Files (*.json) | *.json" };
@@ -126,7 +130,7 @@ namespace Firefall_DISASM_Name_Manager
             // JEB Scripts must have their script filename and entry point method name be identical
             if (ExportTypeComboBox.Text == "JEB Python")
             {
-                SFD.FileName = $"JEBScript_FFC_MakeNames_{ Globals.TargetClientVersion }.py";
+                SFD.FileName = $"JEBScript_FFC_MakeNames_{Globals.TargetClientVersion}.py";
             }
 
             if (SFD.ShowDialog() == DialogResult.OK)

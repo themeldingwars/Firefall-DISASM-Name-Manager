@@ -117,6 +117,9 @@ namespace Firefall_DISASM_Name_Manager
                 case "File (IDA Python)":
                     NamesObject = new NameManager().FromIDAPython(ImportContentTB.Lines, LocalBaseAddress);
                     break;
+                case "File (IDA Python 7+)":
+                    NamesObject = new NameManager().FromIDAPython(ImportContentTB.Lines, LocalBaseAddress, 7);
+                    break;
                 case "File (Ghidra Python)":
                     NamesObject = new NameManager().FromGhidraPython(ImportContentTB.Lines, LocalBaseAddress);
                     break;
@@ -125,6 +128,9 @@ namespace Firefall_DISASM_Name_Manager
                     break;
                 case "Raw (IDA Python)":
                     NamesObject = new NameManager().FromIDAPython(ImportContentTB.Lines, LocalBaseAddress);
+                    break;
+                case "Raw (IDA Python 7+)":
+                    NamesObject = new NameManager().FromIDAPython(ImportContentTB.Lines, LocalBaseAddress, 7);
                     break;
                 case "Raw (Ghidra Python)":
                     NamesObject = new NameManager().FromGhidraPython(ImportContentTB.Lines, LocalBaseAddress);

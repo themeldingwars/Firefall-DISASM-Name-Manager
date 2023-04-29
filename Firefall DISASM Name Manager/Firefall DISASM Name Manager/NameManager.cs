@@ -80,13 +80,19 @@ namespace Firefall_DISASM_Name_Manager
             return FinalAddress;
         }
 
-        public string ToIDAPython(List<NameClass> Names, int EnabledStatusLevel, int LocalBaseAddress = 0x400000)
+        public string ToIDAPython(List<NameClass> Names, int EnabledStatusLevel, int LocalBaseAddress = 0x400000, int IDAVersion = 6)
         {
             StringBuilder result = new StringBuilder();
 
             result.Append($"# IDA Python MakeName Script for FirefallClient.exe V{ Globals.TargetClientVersion + Environment.NewLine + Environment.NewLine }");
 
             string CurrentCategory = "__CurrentCategory__INVALID";
+
+            string MakeNameFormat = "MakeName";
+            if (IDAVersion >= 7)
+            {
+                MakeNameFormat = "set_name";
+            }
 
             foreach (NameClass item in Names)
             {
@@ -117,19 +123,25 @@ namespace Firefall_DISASM_Name_Manager
                 string Status = (EnabledStatusLevel < item.Status ? new string('#', item.Status) : "");
                 string Comment = (item.Comment.Length > 0 ? $" # { item.Comment }" : "");
 
-                result.Append($"{ Status }MakeName({ FinalAddress }, \"{ item.Name }\"){ Comment }" + Environment.NewLine);
+                result.Append($"{Status}{MakeNameFormat}({FinalAddress}, \"{item.Name}\"){Comment}" + Environment.NewLine);
             }
 
             return result.ToString();
         }
 
-        public List<NameClass> FromIDAPython(string[] Lines, int LocalBaseAddress = 0x400000)
+        public List<NameClass> FromIDAPython(string[] Lines, int LocalBaseAddress = 0x400000, int IDAVersion = 6)
         {
             List<NameClass> Names = new List<NameClass>();
 
             string CurrentCategory = "";
             bool CategoryCommenting = false;
             string CategoryComment = "";
+
+            string MakeNameFormat = "MakeName";
+            if (IDAVersion >= 7)
+            {
+                MakeNameFormat = "set_name";
+            }
 
             foreach (string line in Lines)
             {
@@ -157,20 +169,20 @@ namespace Firefall_DISASM_Name_Manager
                     CategoryCommenting = false;
                     CategoryComment = "";
                 }
-                else if(line.Contains("MakeName(") && CategoryCommenting == false)
+                else if(line.Contains($"{MakeNameFormat}(") && CategoryCommenting == false)
                 {
                     NameClass Name = new NameClass();
 
                     int Status = 0;
-                    if (line.StartsWith("#MakeName"))
+                    if (line.StartsWith($"#{MakeNameFormat}"))
                     {
                         Status = 1;
                     }
-                    else if (line.StartsWith("##MakeName"))
+                    else if (line.StartsWith($"##{MakeNameFormat}"))
                     {
                         Status = 2;
                     }
-                    else if (line.StartsWith("###MakeName"))
+                    else if (line.StartsWith($"###{MakeNameFormat}"))
                     {
                         Status = 3;
                     }

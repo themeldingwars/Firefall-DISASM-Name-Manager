@@ -11,6 +11,7 @@ See the table below for the supported format matrix of what formats can be used 
 | ------ | ------ | ------ |
 | `JSON` | :heavy_check_mark: | :heavy_check_mark: |
 | `IDA Python` | :heavy_check_mark: | :heavy_check_mark: |
+| `IDA Python 7+` | :heavy_check_mark: | :heavy_check_mark: |
 | `Ghidra Python` | :heavy_check_mark: | :heavy_check_mark: |
 | `Ghidra Script (Java)` | :x: | :x: |
 | `JEB Script (Python)` | :x: | :heavy_check_mark: |
@@ -126,6 +127,8 @@ When importing Name data, there is an option to specify the `Base Address` that 
 
 ### Importing IDA Python Scripts
 This tool supports a unique format for these scripts to allow them to be imported and preserve as much useful information as possible.
+
+**Note:** Depending on the IDA version being used `MakeName` will be `set_name` on Ida versions 7.0 and higher. This is identified in the Import/Export UI with an `Ida Python 7+` option.
 
 Format:
 ```py
