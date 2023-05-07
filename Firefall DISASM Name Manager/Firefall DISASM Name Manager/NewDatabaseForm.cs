@@ -36,7 +36,7 @@ namespace Firefall_DISASM_Name_Manager
             {
                 Title = "Select file to save database as...",
                 Filter = "JSON Files (*.json) | *.json",
-                FileName = "FF_DISAM_V" + ClientVersionTB.Text
+                FileName = "FF_DISASM_V" + ClientVersionTB.Text
             };
 
             if (SFD.ShowDialog() == DialogResult.OK)

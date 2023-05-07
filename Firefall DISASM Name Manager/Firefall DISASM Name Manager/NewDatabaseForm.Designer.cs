@@ -29,122 +29,123 @@ namespace Firefall_DISASM_Name_Manager
         /// </summary>
         private void InitializeComponent()
         {
-            this.BaseAddressLabel = new System.Windows.Forms.Label();
-            this.BaseAddressTB = new System.Windows.Forms.TextBox();
-            this.ClientVersionTB = new System.Windows.Forms.TextBox();
-            this.ClientVersionLabel = new System.Windows.Forms.Label();
-            this.FilePathBtn = new System.Windows.Forms.Button();
-            this.CreateDatabaseBtn = new System.Windows.Forms.Button();
-            this.CancelBtn = new System.Windows.Forms.Button();
-            this.FilePathLabel = new System.Windows.Forms.Label();
-            this.SuspendLayout();
+            BaseAddressLabel = new System.Windows.Forms.Label();
+            BaseAddressTB = new System.Windows.Forms.TextBox();
+            ClientVersionTB = new System.Windows.Forms.TextBox();
+            ClientVersionLabel = new System.Windows.Forms.Label();
+            FilePathBtn = new System.Windows.Forms.Button();
+            CreateDatabaseBtn = new System.Windows.Forms.Button();
+            CancelBtn = new System.Windows.Forms.Button();
+            FilePathLabel = new System.Windows.Forms.Label();
+            SuspendLayout();
             // 
             // BaseAddressLabel
             // 
-            this.BaseAddressLabel.Location = new System.Drawing.Point(187, 12);
-            this.BaseAddressLabel.Name = "BaseAddressLabel";
-            this.BaseAddressLabel.Size = new System.Drawing.Size(100, 23);
-            this.BaseAddressLabel.TabIndex = 0;
-            this.BaseAddressLabel.Text = "Base Address :";
-            this.BaseAddressLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            BaseAddressLabel.Location = new System.Drawing.Point(187, 12);
+            BaseAddressLabel.Name = "BaseAddressLabel";
+            BaseAddressLabel.Size = new System.Drawing.Size(100, 23);
+            BaseAddressLabel.TabIndex = 0;
+            BaseAddressLabel.Text = "Base Address :";
+            BaseAddressLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // BaseAddressTB
             // 
-            this.BaseAddressTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.BaseAddressTB.Location = new System.Drawing.Point(293, 12);
-            this.BaseAddressTB.Name = "BaseAddressTB";
-            this.BaseAddressTB.ReadOnly = true;
-            this.BaseAddressTB.Size = new System.Drawing.Size(100, 23);
-            this.BaseAddressTB.TabIndex = 1;
-            this.BaseAddressTB.Text = "0x400000";
+            BaseAddressTB.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            BaseAddressTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            BaseAddressTB.Location = new System.Drawing.Point(393, 12);
+            BaseAddressTB.Name = "BaseAddressTB";
+            BaseAddressTB.ReadOnly = true;
+            BaseAddressTB.Size = new System.Drawing.Size(100, 23);
+            BaseAddressTB.TabIndex = 1;
+            BaseAddressTB.Text = "0x400000";
             // 
             // ClientVersionTB
             // 
-            this.ClientVersionTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ClientVersionTB.Location = new System.Drawing.Point(293, 41);
-            this.ClientVersionTB.Name = "ClientVersionTB";
-            this.ClientVersionTB.Size = new System.Drawing.Size(100, 23);
-            this.ClientVersionTB.TabIndex = 3;
-            this.ClientVersionTB.Text = "1962";
+            ClientVersionTB.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            ClientVersionTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            ClientVersionTB.Location = new System.Drawing.Point(393, 41);
+            ClientVersionTB.Name = "ClientVersionTB";
+            ClientVersionTB.Size = new System.Drawing.Size(100, 23);
+            ClientVersionTB.TabIndex = 3;
+            ClientVersionTB.Text = "1962";
             // 
             // ClientVersionLabel
             // 
-            this.ClientVersionLabel.Location = new System.Drawing.Point(187, 41);
-            this.ClientVersionLabel.Name = "ClientVersionLabel";
-            this.ClientVersionLabel.Size = new System.Drawing.Size(100, 23);
-            this.ClientVersionLabel.TabIndex = 2;
-            this.ClientVersionLabel.Text = "Client Version :";
-            this.ClientVersionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            ClientVersionLabel.Location = new System.Drawing.Point(187, 41);
+            ClientVersionLabel.Name = "ClientVersionLabel";
+            ClientVersionLabel.Size = new System.Drawing.Size(100, 23);
+            ClientVersionLabel.TabIndex = 2;
+            ClientVersionLabel.Text = "Client Version :";
+            ClientVersionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FilePathBtn
             // 
-            this.FilePathBtn.Location = new System.Drawing.Point(187, 75);
-            this.FilePathBtn.Name = "FilePathBtn";
-            this.FilePathBtn.Size = new System.Drawing.Size(206, 25);
-            this.FilePathBtn.TabIndex = 4;
-            this.FilePathBtn.Text = "Select Database File Path";
-            this.FilePathBtn.UseVisualStyleBackColor = true;
-            this.FilePathBtn.Click += new System.EventHandler(this.FilePathBtn_Click);
+            FilePathBtn.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            FilePathBtn.Location = new System.Drawing.Point(187, 75);
+            FilePathBtn.Name = "FilePathBtn";
+            FilePathBtn.Size = new System.Drawing.Size(306, 25);
+            FilePathBtn.TabIndex = 4;
+            FilePathBtn.Text = "Select Database File Path";
+            FilePathBtn.UseVisualStyleBackColor = true;
+            FilePathBtn.Click += FilePathBtn_Click;
             // 
             // CreateDatabaseBtn
             // 
-            this.CreateDatabaseBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.CreateDatabaseBtn.Location = new System.Drawing.Point(12, 167);
-            this.CreateDatabaseBtn.Name = "CreateDatabaseBtn";
-            this.CreateDatabaseBtn.Size = new System.Drawing.Size(135, 25);
-            this.CreateDatabaseBtn.TabIndex = 6;
-            this.CreateDatabaseBtn.Text = "Create Database";
-            this.CreateDatabaseBtn.UseVisualStyleBackColor = true;
-            this.CreateDatabaseBtn.Click += new System.EventHandler(this.CreateDatabaseBtn_Click);
+            CreateDatabaseBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            CreateDatabaseBtn.Location = new System.Drawing.Point(12, 167);
+            CreateDatabaseBtn.Name = "CreateDatabaseBtn";
+            CreateDatabaseBtn.Size = new System.Drawing.Size(135, 25);
+            CreateDatabaseBtn.TabIndex = 6;
+            CreateDatabaseBtn.Text = "Create Database";
+            CreateDatabaseBtn.UseVisualStyleBackColor = true;
+            CreateDatabaseBtn.Click += CreateDatabaseBtn_Click;
             // 
             // CancelBtn
             // 
-            this.CancelBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CancelBtn.Location = new System.Drawing.Point(433, 167);
-            this.CancelBtn.Name = "CancelBtn";
-            this.CancelBtn.Size = new System.Drawing.Size(135, 25);
-            this.CancelBtn.TabIndex = 7;
-            this.CancelBtn.Text = "Cancel";
-            this.CancelBtn.UseVisualStyleBackColor = true;
-            this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
+            CancelBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            CancelBtn.Location = new System.Drawing.Point(533, 167);
+            CancelBtn.Name = "CancelBtn";
+            CancelBtn.Size = new System.Drawing.Size(135, 25);
+            CancelBtn.TabIndex = 7;
+            CancelBtn.Text = "Cancel";
+            CancelBtn.UseVisualStyleBackColor = true;
+            CancelBtn.Click += CancelBtn_Click;
             // 
             // FilePathLabel
             // 
-            this.FilePathLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.FilePathLabel.AutoEllipsis = true;
-            this.FilePathLabel.Location = new System.Drawing.Point(12, 122);
-            this.FilePathLabel.Name = "FilePathLabel";
-            this.FilePathLabel.Size = new System.Drawing.Size(556, 23);
-            this.FilePathLabel.TabIndex = 5;
-            this.FilePathLabel.Text = "<FilePath>";
-            this.FilePathLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            FilePathLabel.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            FilePathLabel.AutoEllipsis = true;
+            FilePathLabel.Location = new System.Drawing.Point(12, 122);
+            FilePathLabel.Name = "FilePathLabel";
+            FilePathLabel.Size = new System.Drawing.Size(656, 23);
+            FilePathLabel.TabIndex = 5;
+            FilePathLabel.Text = "<FilePath>";
+            FilePathLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // NewDatabaseForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.CancelBtn;
-            this.ClientSize = new System.Drawing.Size(580, 197);
-            this.Controls.Add(this.FilePathLabel);
-            this.Controls.Add(this.CancelBtn);
-            this.Controls.Add(this.CreateDatabaseBtn);
-            this.Controls.Add(this.FilePathBtn);
-            this.Controls.Add(this.ClientVersionTB);
-            this.Controls.Add(this.ClientVersionLabel);
-            this.Controls.Add(this.BaseAddressTB);
-            this.Controls.Add(this.BaseAddressLabel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "NewDatabaseForm";
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "New Database";
-            this.Load += new System.EventHandler(this.NewDatabaseForm_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            CancelButton = CancelBtn;
+            ClientSize = new System.Drawing.Size(680, 197);
+            Controls.Add(FilePathLabel);
+            Controls.Add(CancelBtn);
+            Controls.Add(CreateDatabaseBtn);
+            Controls.Add(FilePathBtn);
+            Controls.Add(ClientVersionTB);
+            Controls.Add(ClientVersionLabel);
+            Controls.Add(BaseAddressTB);
+            Controls.Add(BaseAddressLabel);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "NewDatabaseForm";
+            ShowInTaskbar = false;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            Text = "New Database";
+            Load += NewDatabaseForm_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
