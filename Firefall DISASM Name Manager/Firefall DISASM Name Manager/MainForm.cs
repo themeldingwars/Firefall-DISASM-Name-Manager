@@ -493,6 +493,14 @@ namespace Firefall_DISASM_Name_Manager
             }
 
             ToggleEditInputMode(true);
+
+            if (EditNameDataMode && NamesListView.SelectedItems.Count == 1)
+            {
+                ListItemToNameDataFields(NamesListView.SelectedItems[0]);
+
+                CopySelectedItemBtn.Enabled = true;
+                DeleteSelectedItemBtn.Enabled = true;
+            }
         }
 
         private void AddModeBtn_Click(object sender, EventArgs e)
